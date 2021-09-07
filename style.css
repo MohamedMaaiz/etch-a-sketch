@@ -1,0 +1,22 @@
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+.gridCollection {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+    width: 90px;
+    height: 90px;
+}
+
+.divBox {
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+}
+
+.divHover {
+    background-color: black;
+}
