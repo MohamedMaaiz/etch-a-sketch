@@ -16,6 +16,8 @@ gridGenerate(16);
 
 //generates the divs
 function gridGenerate (gridNumber) {
+    gridCollection.style.gridTemplateColumns = `repeat(${gridNumber}, 1fr)`;
+
     for (i=0; i < gridNumber * gridNumber; i++){
         const oneDiv = document.createElement('div');
         oneDiv.addEventListener('mouseover', () => {oneDiv.classList.add('divHover')});
@@ -46,4 +48,6 @@ function rangechanger() {
     rangeSelector.oninput = function() {
         rangeNumber.innerHTML = this.value;
     }
+    gridCollection.innerHTML = '';
+    gridGenerate(rangeNumber.innerHTML);
 };

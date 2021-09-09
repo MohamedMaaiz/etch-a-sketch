@@ -1,20 +1,48 @@
-h1 {
+@import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
+
+body {
     display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.header {
+    width: 33%;
+}
+
+.mid {
+    width: 33%;
+}
+
+h1 {
+    /* display: flex; */
     justify-content: center;
+    /* margin-top: 25px; */
+    font-family: 'Allura', cursive;
+    font-size: 70px;
+    font-weight: normal;
+    /* flex-wrap: wrap; */
+}
+
+.setting {
+    display: flex;
+    flex-direction: column;
 }
 
 #grid-collection {
+    /* position: absolute; */
     display: grid;
-    grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: repeat(16, 1fr);
-    width: 90px;
-    height: 90px;
+    border: 1px solid black;
+    width: 500px;
+    height: 500px;
+    /* margin-top: 50%; */
 }
 
 .generated {
-    width: 50px;
-    height: 50px;
-    border: 1px solid black;
+    justify-content: stretch;
+    /* border: 1px solid black; */
 }
 
 .divHover {
