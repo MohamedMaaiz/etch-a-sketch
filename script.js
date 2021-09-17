@@ -10,13 +10,15 @@ const mixBTN = document.getElementById('mix-btn')
 //BTN selectors
 clearBTN.onclick = () => clearArts();
 mixBTN.onclick = () => colorMixer();
+// mixBTN.onclick = () => changeColor(currentMode = 'mix');
 eraserBTN.onclick = () => eraseOnHover();
 rangeSelector.onchange = () => rangechanger();
-colorPicker.onchange = () => changeColor();
+colorPicker.onchange = () => userColor();
 
 //////////DEFAULT//////////
-let defaultColor = '#000000';
+// let defaultColor = '#000000';
 let dives;
+let currentMode = 'black';
 gridGenerate(16);
 
 //generates the divs
@@ -31,24 +33,31 @@ function gridGenerate (gridNumber) {
     }
 }
 
-//selecting all the generated dives
-function divSelect () {
-    dives = document.querySelectorAll('.generated');
-}
-
+//changing the mode
 //change the color on color pick
-function changeColor(e) {
-    // console.log(colorPicker.value)
-    //come back later for the error
-    // console.log(e)
-    e.target.style.backgroundColor = colorPicker.value;    
-}
+function changeColor() {
+    console.log(currentMode)
+    
+    switch (currentMode) {
+        case 'balck':
+            this.style.backgroundColor = '#ffffff'
+            break;
 
-//clean all arts
-function clearArts() {
-    divSelect();
-    dives.forEach(div => div.style.backgroundColor = '')
-};
+        case 'mix':
+            this.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+            break;
+
+        case 'user':
+            // console.log(colorPicker.value)
+            // this.style.backgroundColor = colorPicker.value;
+            break;
+    
+        default:
+            this.style.backgroundColor = colorPicker.value
+            break;
+    }
+
+}
 
 //erase on mouse hover
 // have to chage the menual number
@@ -56,7 +65,7 @@ let eraser = false;
 function eraseOnHover() {
     let mode;
     if (eraser == true) {
-        mode = '#000000';
+        mode = '#ffffff';
         eraser = false;
     } else {
         mode = '';
@@ -69,24 +78,36 @@ function eraseOnHover() {
     }));
 };
 
-//color Mixer
-// let colorMixMode = false;
-// function colorMixer(e) {
-//     if (colorMixMode == true) {
-//         e.target.style.backgroundColor = colorPicker.value;   
-//     } else {
-//         // dives.style.backgroundColor = "#" + randomColor;
-//         // console.log(dives[0])
-//     }
-//     mixBTN.classList.toggle('buttonActive');
-//     divSelect();
-//     let randomColor = Math.floor(Math.random()*16777215).toString(16);
-//     console.log(randomColor)
-//     dives.forEach(div => div.addEventListener('mouseover', function(e) {
-//         e.target.style.backgroundColor = randomColor;
-//     }));
-//     //make a new swith mode function 
-// }
+//changing the color when user chagnes it
+function userColor() {
+    currentMode = 'default'
+}
+
+
+//selecting all the generated dives
+function divSelect () {
+    dives = document.querySelectorAll('.generated');
+}
+
+
+//clean all arts
+function clearArts() {
+    divSelect();
+    dives.forEach(div => div.style.backgroundColor = '')
+};
+
+// color Mixer
+let colorMixMode = false;
+function colorMixer() {
+    if (colorMixMode == true) {
+        currentMode = 'default'
+        colorMixMode = false;
+    } else { 
+        currentMode = 'mix'
+        colorMixMode = true
+    }
+    mixBTN.classList.toggle('buttonActive');
+}
 
 //changes the div box number
 function rangechanger() {
