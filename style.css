@@ -6,59 +6,96 @@ html {
 
 body {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    
-    justify-content: center;
-    gap: 5%;
 }
 
 .header {
-    /* background-color: blue; */
     text-align: center;
 }
 
 .mid {
-    /* background-color: brown; */
-    margin: 10px;
+    margin-top: 0;
 }
 
 h1 {
     justify-content: center;
     font-family: 'Allura', cursive;
-    font-size: 70px;
+    font-size: 90px;
     font-weight: normal;
+    margin: 8px 0;
+    color: #484848;
+    text-shadow: 2px 2px 6px #7b7b7b,
+     -2px -2px 6px #ffffff;
+     transition: .7s;
 }
 
-.setting {
-    /* background-color: cornflowerblue; */
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+h1:hover {
+    text-shadow: 2px 2px 15px #313131,
+     -1px -1px 0px #ffffff;
+     transition: .7s;
 }
+
 
 #grid-collection {
     display: grid;
-    border: 1px solid black;
     width: 500px;
     height: 500px;
+     box-shadow: 5px 3px 13px 2px #b2b2b299,
+      0px 0px 2px 0px #f4f4f4; 
 }
+
+
 
 .generated {
     justify-content: stretch;
 }
 
 /**************** setting ****************/
+.setting {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: sans-serif;
+    width: 500px;
+    gap: 16px;
+    margin-top: 24px;
+    margin-bottom: 18px;
+}
+
+.main-buttons {
+    display: flex;
+    gap: 24px;
+}
+
+.size-div {
+    display: flex;
+    gap: 24px;
+    order: 1;
+    align-items: center;
+}
 
 input[type='color'] {
     -webkit-appearance: none;
+    background: none;
     border: none;
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    order: 2;
+}
+
+input[type="color"]::-webkit-color-swatch {
+    transition: .5s;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 2px 4px 5px 0px #b2b2b299,
+     0px -1px 7px 2px #f4f4f4;  
 }
 
 button {
     background-color: #e0e5ec;
     color: #484848;
+    font-size: 18px;
     border-radius: 3px;
     height: 30px;
     width: 100px;
@@ -73,14 +110,7 @@ div .buttonActive {
     color: #e0e5ec;
 }
 
-button:hover {
-    box-shadow: 5px 3px 13px 2px #b2b2b299,
-     0px 0px 4px 0px #f4f4f4; 
-    transition: .3s;
-    
-}
-
-input[type='range']:hover {
+input[type='range']:hover,input[type="color"]::-webkit-color-swatch:hover, button:hover {
     box-shadow: 5px 3px 13px 2px #b2b2b299,
      0px 0px 4px 0px #f4f4f4; 
     transition: .3s;
@@ -90,6 +120,8 @@ input[type='range'] {
     appearance: none;
     background-color: #e0e5ec;
     border-radius: 25px;
+    width: 180px;
+    height: 15px;
     box-shadow: 2px 4px 5px 0px #b2b2b299,
      0px -1px 7px 2px #f4f4f4;
      transition: .5s;
@@ -103,18 +135,73 @@ input[type='range']::-webkit-slider-thumb {
   background: #484848;
 }
 
-
-@media only screen and (max-width: 900px) {
-    body {
-        flex-direction: column;
-    }
+.size-div p {
+    margin: 0;
+    color: #484848;
+    font-size: 18px;
+    text-shadow: 3px 1px 6px #9b9b9b;
+    transition: .5s;
 }
-@media only screen and (min-width: 900px) {
+
+.size-div p:hover {
+    text-shadow: 2px 2px 9px #676767;
+    transition: .3s;
+}
+
+@media only screen and (min-width: 950px) {
     .header {
-        width: 150px;
+        width: 230px;
     }
     body {
+        flex-direction: row;
         height: 100vh;
+        justify-content: space-evenly;
+        overflow: hidden;
+    }
+
+    h1 {
+        font-size: 100px;
+    }
+
+    button {
+        width: 180px;
+        height: 34px;
+        font-size: 24px;
+    }
+
+    .setting {
+        flex-direction: column;
+        width: 180px;
+        gap: 32px;
+    }
+
+    input[type='color'] {
+        order: 1;
     }
     
+    .main-buttons {
+        flex-direction: column;
+        order: 2;
+    }
+
+    .size-div {
+        display: flex;
+        flex-direction: column;
+        order: 3;
+    }
+
+    .size-div p {
+        order: -1;
+        font-size: 28px;
+    }
+
+    input[type='range'] {
+        width: 180px;
+    }
+
+    input[type='color'] {
+        width: 180px;
+        height: 38px;
+        margin-bottom: 40px;
+    }
 }
